@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Calculator.Views.CalculatorPage"
+    Title="Calculator">
+    <Grid
+        RowDefinitions="2*,1.5*,*,*,*,*"
+        ColumnDefinitions="*,*,*,*,*">
+        <!-- Ввод -->
+        <Label
+            Padding="6,0,4,0"
+            VerticalTextAlignment="End"
+            HorizontalTextAlignment="End"
+            VerticalOptions="Center"
+            Grid.Row="0"
+            Grid.ColumnSpan="5">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span
+                        Text="{Binding InputText}"
+                        Style="{StaticResource InputBoxLabelStyle}" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <!-- Фон ответа -->
+        <BoxView
+            VerticalOptions="Fill"
+            HorizontalOptions="Fill"
+            BackgroundColor="#a8b69f"
+            Grid.Row="1"
+            Grid.ColumnSpan="5" />
+        <!-- Ответ -->
+        <Grid
+            ColumnDefinitions="Auto,*"
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="5">
+            <Label
+                Text="="
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center"
+                Style="{StaticResource EqualsLabelStyle}"
+                Margin="16,0" />
+            <Label
+                Text="{Binding CalculatedResult, Mode=OneWay}"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center"
+                HorizontalOptions="End"
+                Grid.Column="1"
+                Style="{StaticResource ResultLabelStyle}"
+                Margin="16,0" />
+        </Grid>
+        <!-- Операторы -->
+        <Button
+            Grid.Row="2"
+            Grid.Column="3"
+            Style="{StaticResource OperatorButtonStyle}"
+            Text="+"
+            Command="{Binding MathOperatorCommand}"
+            CommandParameter="+" />
+        <Button
+            Grid.Row="2"
+            Grid.Column="4"
+            Style="{StaticResource OperatorButtonStyle}"
+            Text="-"
+            Command="{Binding MathOperatorCommand}"
+            CommandParameter="-" />
+        <Button
+            Grid.Row="3"
+            Grid.Column="3"
+            Style="{StaticResource OperatorButtonStyle}"
+            Text="*"
+            Command="{Binding MathOperatorCommand}"
+            CommandParameter="*" />
+        <Button
+            Grid.Row="3"
+            Grid.Column="4"
+            Style="{StaticResource OperatorButtonStyle}"
+            Text="/"
+            Command="{Binding MathOperatorCommand}"
+            CommandParameter="/" />
+        <Button
+            Grid.Row="4"
+            Grid.Column="3"
+            Style="{StaticResource OperatorButtonStyle}"
+            Text="("
+            Command="{Binding RegionOperatorCommand}"
+            CommandParameter="(" />
+        <Button
+            Grid.Row="4"
+            Grid.Column="4"
+            Style="{StaticResource OperatorButtonStyle}"
+            Text=")"
+            Command="{Binding RegionOperatorCommand}"
+            CommandParameter=")" />
+        <Button
+            Grid.Row="5"
+            Grid.Column="3"
+            Style="{StaticResource OperatorButtonStyle}"
+            Text="AC"
+            Command="{Binding ResetCommand}" />
+        <Button
+            Grid.Row="5"
+            Grid.Column="4"
+            Style="{StaticResource OperatorButtonStyle}"
+            Text="="
+            FontSize="28"
+            Command="{Binding CalculateCommand}" />
+        <!-- Цифры -->
+        <Button
+            Grid.Row="2"
+            Grid.Column="0"
+            Style="{StaticResource NumberButtonStyle}"
+            Text="7"
+            Command="{Binding NumberInputCommand}"
+            CommandParameter="7" />
+        <Button
+            Grid.Row="2"
+            Grid.Column="1"
+            Style="{StaticResource NumberButtonStyle}"
+            Text="8"
+            Command="{Binding NumberInputCommand}"
+            CommandParameter="8" />
+        <Button
+            Grid.Row="2"
+            Grid.Column="2"
+            Style="{StaticResource NumberButtonStyle}"
+            Text="9"
+            Command="{Binding NumberInputCommand}"
+            CommandParameter="9" />
+        <Button
+            Grid.Row="3"
+            Grid.Column="0"
+            Style="{StaticResource NumberButtonStyle}"
+            Text="4"
+            Command="{Binding NumberInputCommand}"
+            CommandParameter="4" />
+        <Button
+            Grid.Row="3"
+            Grid.Column="1"
+            Style="{StaticResource NumberButtonStyle}"
+            Text="5"
+            Command="{Binding NumberInputCommand}"
+            CommandParameter="5" />
+        <Button
+            Grid.Row="3"
+            Grid.Column="2"
+            Style="{StaticResource NumberButtonStyle}"
+            Text="6"
+            Command="{Binding NumberInputCommand}"
+            CommandParameter="6" />
+        <Button
+            Grid.Row="4"
+            Grid.Column="0"
+            Style="{StaticResource NumberButtonStyle}"
+            Text="1"
+            Command="{Binding NumberInputCommand}"
+            CommandParameter="1" />
+        <Button
+            Grid.Row="4"
+            Grid.Column="1"
+            Style="{StaticResource NumberButtonStyle}"
+            Text="2"
+            Command="{Binding NumberInputCommand}"
+            CommandParameter="2" />
+        <Button
+            Grid.Row="4"
+            Grid.Column="2"
+            Style="{StaticResource NumberButtonStyle}"
+            Text="3"
+            Command="{Binding NumberInputCommand}"
+            CommandParameter="3" />
+        <Button
+            Grid.Row="5"
+            Grid.Column="0"
+            Style="{StaticResource NumberButtonStyle}"
+            Text=","
+            Command="{Binding DecimalInputCommand}" />
+        <Button
+            Grid.Row="5"
+            Grid.Column="1"
+            Style="{StaticResource NumberButtonStyle}"
+            Text="0"
+            Command="{Binding NumberInputCommand}"
+            CommandParameter="0" />
+        <Button
+            Grid.Row="5"
+            Grid.Column="2"
+            Style="{StaticResource NumberButtonStyle}"
+            Text="⌫"
+            Command="{Binding BackspaceCommand}" />
+        <!-- Горизонтальные линии -->
+        <BoxView
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="5"
+            HorizontalOptions="Fill"
+            VerticalOptions="End"
+            HeightRequest="1"
+            BackgroundColor="{StaticResource PageBackgroundColor}" />
+        <BoxView
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            HorizontalOptions="Fill"
+            VerticalOptions="End"
+            HeightRequest="1"
+            BackgroundColor="{StaticResource BorderColor}" />
+        <BoxView
+            Grid.Row="2"
+            Grid.Column="3"
+            Grid.ColumnSpan="2"
+            HorizontalOptions="Fill"
+            VerticalOptions="End"
+            HeightRequest="1"
+            BackgroundColor="{StaticResource PageBackgroundColor}" />
+        <BoxView
+            Grid.Row="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            HorizontalOptions="Fill"
+            VerticalOptions="End"
+            HeightRequest="1"
+            BackgroundColor="{StaticResource BorderColor}" />
+        <BoxView
+            Grid.Row="3"
+            Grid.Column="3"
+            Grid.ColumnSpan="2"
+            HorizontalOptions="Fill"
+            VerticalOptions="End"
+            HeightRequest="1"
+            BackgroundColor="{StaticResource PageBackgroundColor}" />
+        <BoxView
+            Grid.Row="4"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            HorizontalOptions="Fill"
+            VerticalOptions="End"
+            HeightRequest="1"
+            BackgroundColor="{StaticResource BorderColor}" />
+        <BoxView
+            Grid.Row="4"
+            Grid.Column="3"
+            Grid.ColumnSpan="2"
+            HorizontalOptions="Fill"
+            VerticalOptions="End"
+            HeightRequest="1"
+            BackgroundColor="{StaticResource PageBackgroundColor}" />
+        <!-- Вертикальные линии -->
+        <BoxView
+            Grid.Row="2"
+            Grid.RowSpan="4"
+            Grid.Column="0"
+            HorizontalOptions="End"
+            VerticalOptions="Fill"
+            WidthRequest="1"
+            BackgroundColor="{StaticResource BorderColor}" />
+        <BoxView
+            Grid.Row="2"
+            Grid.RowSpan="4"
+            Grid.Column="1"
+            HorizontalOptions="End"
+            VerticalOptions="Fill"
+            WidthRequest="1"
+            BackgroundColor="{StaticResource BorderColor}" />
+        <BoxView
+            Grid.Row="2"
+            Grid.RowSpan="4"
+            Grid.Column="2"
+            HorizontalOptions="End"
+            VerticalOptions="Fill"
+            WidthRequest="1"
+            BackgroundColor="{StaticResource PageBackgroundColor}" />
+        <BoxView
+            Grid.Row="2"
+            Grid.RowSpan="4"
+            Grid.Column="3"
+            HorizontalOptions="End"
+            VerticalOptions="Fill"
+            WidthRequest="1"
+            BackgroundColor="{StaticResource PageBackgroundColor}" />
+    </Grid>
+</ContentPage>
